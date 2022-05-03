@@ -2,6 +2,8 @@ from pystyle import Colors, Colorate, Center, Write
 from utils import *
 import Get
 
+clearConsole()
+
 # Print Title
 title = '''
 ███████ ██████  ██████  ██    ██ ███████ ███████ ██      ███████ ██████  
@@ -62,7 +64,7 @@ for i, question in enumerate(questions):
                 answer_text = answer_text[:len(answer_text) - 4]
         
         question_text = f"\n{question['body'][0]['text']}"
-        print(Colorate.Vertical(Colors.cyan_to_blue, question_text, 1))
+        print(Colorate.Vertical(Colors.cyan_to_blue, f'{question_text}\n{answer_text}', 1))
     
     elif question['type'] == 'open-ended':
         question_text = f"\n{question['body'][0]['text']}\nOpen Ended"
