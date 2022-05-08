@@ -1,4 +1,5 @@
 from pystyle import Colors, Colorate, Center, Write
+from html2text import html2text
 from utils import *
 import Get
 
@@ -62,10 +63,13 @@ for i, question in enumerate(questions):
                 answer_text = answer['body'][0]['html']
                 answer_text = answer_text[3:]
                 answer_text = answer_text[:len(answer_text) - 4]
-        
-        question_text = f"\n{question['body'][0]['text']}"
-        print(Colorate.Vertical(Colors.cyan_to_blue, f'{question_text}\n{answer_text}', 1))
+                answer_text = html2text(answer_text)
+    
+        question_text = html2text(question['body'][0]['html'])
+        print(Colorate.Vertical(Colors.cyan_to_blue, f'\n{question_text}\n', 1))
+        print(Colorate.Vertical(Colors.green_to_yellow, f'{answer_text}', 1))
     
     elif question['type'] == 'open-ended':
-        question_text = f"\n{question['body'][0]['text']}\nOpen Ended"
-        print(Colorate.Vertical(Colors.cyan_to_blue, question_text, 1))
+        question_text = html2text(question['body'][0]['html'])
+        print(Colorate.Vertical(Colors.cyan_to_blue, f"\n{question_text}\n", 1))
+        print(Colorate.Vertical(Colors.green_to_yellow, 'OPEN ENDED', 1))
