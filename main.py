@@ -73,3 +73,6 @@ for i, question in enumerate(questions):
         question_text = html2text(question['body'][0]['html'])
         print(Colorate.Vertical(Colors.cyan_to_blue, f"\n{question_text}\n", 1))
         print(Colorate.Vertical(Colors.green_to_yellow, 'OPEN ENDED', 1))
+
+while True:
+    pass

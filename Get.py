@@ -1,5 +1,4 @@
 import requests
-import pprint
 
 def Tokens(user, password):
     session = requests.session()
