@@ -1,8 +1,10 @@
-FROM python:3-slim
+FROM python:slim
 
-RUN mkdir /app
+RUN pip install --upgrade pip \
+    && mkdir /app
 WORKDIR /app
 
-COPY *.py /app/
+COPY ./src/ /app/
+RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python" /app/main.py]
+ENTRYPOINT ["python", "/app/main.py"]
